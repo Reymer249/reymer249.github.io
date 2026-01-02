@@ -1,12 +1,735 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Max Lytovka — Data Scientist</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maksym Lytovka - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #353535;
+            background: #ffffff;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #d9d9d9;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        nav.scrolled {
+            box-shadow: 0 2px 8px rgba(53, 53, 53, 0.1);
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+        }
+        
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #284b63;
+            letter-spacing: 0.5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #353535;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #284b63;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #284b63;
+        }
+        
+        nav ul a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #284b63;
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #3c6e71;
+        }
+        
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+        
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+            margin: 2rem auto;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.4s forwards;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.6s forwards;
+        }
+        
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #ffffff;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: #ffffff;
+            color: #284b63;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: #284b63;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #3c6e71;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #3c6e71;
+            margin-bottom: 3rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 300;
+        }
+        
+        /* About Me Section */
+        #about {
+            background: #ffffff;
+            border-top: 1px solid #d9d9d9;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
+        
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+        
+        .about-text p {
+            color: #353535;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.9rem 2.5rem;
+            background: #284b63;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: 2px solid #284b63;
+        }
+        
+        .download-btn:hover {
+            background: #ffffff;
+            color: #284b63;
+        }
+        
+        /* Projects Grid */
+        #projects {
+            background: #f8f8f8;
+            border-top: 1px solid #d9d9d9;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background: #ffffff;
+            overflow: hidden;
+            border: 1px solid #d9d9d9;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(53, 53, 53, 0.1);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid #d9d9d9;
+        }
+        
+        .project-content {
+            padding: 2rem;
+        }
+        
+        .project-content h3 {
+            color: #284b63;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        
+        .project-content p {
+            color: #353535;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: #3c6e71;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .project-link:hover {
+            color: #284b63;
+            border-bottom-color: #284b63;
+        }
+        
+        /* Timeline */
+        #experience, #education {
+            background: #ffffff;
+            border-top: 1px solid #d9d9d9;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #3c6e71;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            animation: fadeInTimeline 0.8s ease forwards;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: #ffffff;
+            padding: 2.5rem;
+            border: 1px solid #d9d9d9;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .timeline-content:hover {
+            box-shadow: 0 4px 12px rgba(53, 53, 53, 0.1);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: #284b63;
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 2px #3c6e71;
+            z-index: 1;
+        }
+        
+        .timeline-image {
+            width: 100%;
+            height: 145px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-image.tall {
+            height: 240px;
+        }
+
+        .timeline-image.upml {
+            height: 280px;
+        }
+
+        .timeline-image.med {
+            height: 190px;
+        }
+
+        .timeline-image.uva {
+            height: 125px;
+        }
+
+        .timeline-image.datargy {
+            height: 140px;
+        }
+        
+        .timeline-content h3 {
+            color: #284b63;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        
+        .timeline-content h4 {
+            color: #353535;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        
+        .timeline-date {
+            color: #3c6e71;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .timeline-content p {
+            color: #353535;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+        
+        .timeline-link {
+            color: #3c6e71;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .timeline-link:hover {
+            color: #284b63;
+            border-bottom-color: #284b63;
+        }
+        
+        /* Footer */
+        footer {
+            background: #353535;
+            color: #d9d9d9;
+            text-align: center;
+            padding: 2.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.95rem;
+            border-top: 2px solid #3c6e71;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInTimeline {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-photo {
+                margin: 0 auto;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Max Lytovka</h1>
-  <p>Data Scientist | Applied ML</p>
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="container">
+            <div class="logo">ML</div>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Maksym Lytovka</h1>
+            <div class="hero-divider"></div>
+            <p>Data Scientist | Machine Learning Engineer | Researcher</p>
+            <div class="social-icons">
+                <a href="mailto:ml2893@cornell.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/max-lytovka" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Reymer249" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <img src="profile.jpg" alt="Maksym Lytovka" class="profile-photo">
+            <div class="about-text">
+                <p>Add your introduction here. Talk about your background, passions, and what drives you in the field of data science and machine learning.</p>
+                <p>Describe your expertise, current focus areas, and what makes you unique as a professional. Discuss your technical capabilities and areas of specialization.</p>
+                <p>You can also mention your approach to problem-solving, your favorite technologies, or your career aspirations and long-term goals in the industry.</p>
+                <a href="resume.pdf" class="download-btn" download><i class="fas fa-download"></i> Download Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <!-- Project Card 1 -->
+            <div class="project-card">
+                <img src="project1.jpg" alt="Project 1" class="project-image">
+                <div class="project-content">
+                    <h3>Project Title 1</h3>
+                    <p>Add your project description here. Explain what the project does, technologies used, and key achievements or outcomes.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="project-card">
+                <img src="project2.jpg" alt="Project 2" class="project-image">
+                <div class="project-content">
+                    <h3>Project Title 2</h3>
+                    <p>Add your project description here. Explain what the project does, technologies used, and key achievements or outcomes.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="project-card">
+                <img src="project3.jpg" alt="Project 3" class="project-image">
+                <div class="project-content">
+                    <h3>Project Title 3</h3>
+                    <p>Add your project description here. Explain what the project does, technologies used, and key achievements or outcomes.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <!-- Experience Item 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <img src="images/datargy.png" alt="Datargy" class="timeline-image datargy">
+                    <h3>Data Scientist</h3>
+                    <h4><a href="https://datargy.com" class="timeline-link" target="_blank">Datargy</a></h4>
+                    <div class="timeline-date">January 2024 - Present</div>
+                    <p>Add your role description and key achievements here.</p>
+                </div>
+            </div>
+
+            <!-- Experience Item 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <img src="images/algozeus.png" alt="AlgoZeus" class="timeline-image">
+                    <h3>Data Engineer</h3>
+                    <h4><a href="https://www.linkedin.com/company/algozeus/" class="timeline-link">AlgoZeus</a></h4>
+                    <div class="timeline-date">July 2023 - January 2024</div>
+                    <p>Add your role description and key achievements here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        
+        <div class="timeline">
+            <!-- Education Item 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <img src="images/cornell.jpg" alt="Cornell Tech" class="timeline-image">
+                    <h3>MEng in Data Science and Decision Analytics</h3>
+                    <h4><a href="https://www.tech.cornell.edu" class="timeline-link" target="_blank">Cornell Tech, Cornell University</a></h4>
+                    <div class="timeline-date">Expected May 2026 | New York, NY</div>
+                    <p><strong>GPA: 4.11</strong> | Merit Scholarship</p>
+                    <p>Relevant Coursework: Modelling Under Uncertainty, Optimization Methods, Applied Machine Learning, Machine Learning Engineering</p>
+                </div>
+            </div>
+
+            <!-- Education Item 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <img src="images/uva2.jpg" alt="University of Amsterdam" class="timeline-image uva">
+                    <h3>Minor in Entrepreneurship</h3>
+                    <h4><a href="https://www.uva.nl" class="timeline-link" target="_blank">University of Amsterdam</a></h4>
+                    <div class="timeline-date">2023 - 2025 | Amsterdam, Netherlands</div>
+                    <p>Completed as part of Bachelor's degree program at Leiden University.</p>
+                    <p>Relevant Coursework: Entrepreneurship in Practice</p>
+                </div>
+            </div>
+
+            <!-- Education Item 3 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <img src="images/leiden.jpg" alt="Leiden University" class="timeline-image med">
+                    <h3>BS in Data Science and Artificial Intelligence</h3>
+                    <h4><a href="https://www.universiteitleiden.nl" class="timeline-link" target="_blank">Leiden University</a></h4>
+                    <div class="timeline-date">July 2025 | Leiden, Netherlands</div>
+                    <p><strong>GPA: 3.89</strong> | cum laude</p>
+                    <p>Relevant Coursework: Statistics, Linear Algebra, Machine Learning, Deep Learning, Computer Vision, Reinforcement Learning</p>
+                </div>
+            </div>
+            
+            <!-- Education Item 4 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <img src="images/ejm.jpg" alt="École Jeannine Manuel" class="timeline-image tall">
+                    <h3>High School Diploma (International Baccalaureate)</h3>
+                    <h4><a href="https://ecolejeanninemanuel.org" class="timeline-link" target="_blank">École Jeannine Manuel</a></h4>
+                    <div class="timeline-date">February 2022 - July 2022 | Paris, France</div>
+                    <p>École Jeannine Manuel is a prestigious private bilingual international school, consistently ranked among the top French schools. The school welcomed me to complete my academic year in the International Baccalaureate program after relocating from Ukraine.</p>
+                    <p><strong>Focus Areas:</strong> Mathematics, Physics, English</p>
+                    <p><strong>Activities:</strong> Science research projects in physics</p>
+                </div>
+            </div>
+            
+            <!-- Education Item 5 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <img src="images/upml.jpg" alt="Ukrainian Physics and Mathematics Lyceum" class="timeline-image upml">
+                    <h3>High School Diploma</h3>
+                    <h4><a href="http://upml.knu.ua" class="timeline-link" target="_blank">Ukrainian Physics and Mathematics Lyceum</a></h4>
+                    <div class="timeline-date">September 2017 - June 2022 | Kyiv, Ukraine</div>
+                    <p>UPML is one of Ukraine's top science magnet schools, affiliated with Taras Shevchenko National University of Kyiv. Established in 1963, the lyceum is renowned for producing winners of National Ukrainian and International Olympiads in Physics, Mathematics, Chemistry, and Informatics.</p>
+                    <p><strong>Focus Areas:</strong> Mathematics, Computer Science, Physics</p>
+                    <p><strong>Activities:</strong> Programming contests (representing school), facultative lessons in programming and physics</p>
+                    <p><strong>Skills Developed:</strong> Python, C++, Mathematics, Leadership, Mechanical Engineering</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Maksym Lytovka. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
