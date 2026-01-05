@@ -498,6 +498,14 @@
             line-height: 1.8;
         }
 
+        .project-description p {
+            margin-bottom: 0.8rem;
+        }
+
+        .project-description p:last-child {
+            margin-bottom: 0;
+        }
+
         .project-skills {
             display: flex;
             flex-wrap: wrap;
@@ -1190,7 +1198,7 @@
                 skills: ["Python", "Machine Learning", "Time Series", "XGBoost", "Neural Networks", "Google Cloud", "Data Pipeline"],
                 linkedTo: ["exp-datargy"],
                 image: "images/datargy-forecasts.png",
-                projectUrl: "https://datargy.com/en/dashboards"
+                projectUrl: "https://datargy.com/dashboards?id=a9bad300-70c2-4fc9-81bb-5de9276522fd"
             },
             {
                 id: 2,
@@ -1216,10 +1224,14 @@
                 id: 4,
                 title: "Military Telegram Bot",
                 type: "Professional",
-                description: "Developed optimization methods for machine learning models as part of Cornell Tech coursework, focusing on gradient-based and stochastic optimization techniques.",
+                description: [
+                    "This project began when Serhii, an officer in the Ukrainian military working in Electronic and Signal Intelligence, contacted me with a practical problem. He ran a popular Telegram channel used mainly by other soldiers, who needed a safe way to share feedback, ask for technical expertise, and exchange sensitive information about enemy positions and hostile technologies. Existing communication methods were vulnerable to spam, flooding attempts, and potential interference by hostile actors.", 
+                    "The challenge was to build a secure, reliable communication channel with strong account filtering and spam resistance, while remaining easy to use in active operational conditions. Confidentiality, availability, and speed were all critical.", 
+                    "After gathering the requirements directly from Serhii, I independently designed and implemented an end-to-end solution using Python, the python-telegram-bot library, and AWS infrastructure. An initial deployment on AWS Lambda proved too slow in practice, so I migrated the system to an AWS Lightsail server to achieve the necessary responsiveness and stability.", 
+                    "The system is now running in production, storing gigabytes of information and serving over 150,000 users connected to Serhii’s channel, including military personnel and civilians providing actionable information for the Ukrainian army. While technical details cannot be publicly shared, the project represents a real-world, high-impact system built and operated at scale."],
                 skills: ["Python", "AWS/Google Cloud", "AWS S3/Cloud Storage", "python-telegram-bot", "Webhooks"],
                 image: "project1.jpg",
-                projectUrl: "#"
+                projectUrl: "https://t.me/serhii_flash_contact_bot"
             },
             {
                 id: 5,
@@ -1316,7 +1328,12 @@
                                 </div>
                                 <span class="project-type">${project.type}</span>
                             </div>
-                            <p class="project-description">${project.description}</p>
+                                <div class="project-description">
+                                    ${Array.isArray(project.description) 
+                                        ? project.description.map(para => `<p>${para}</p>`).join('') 
+                                        : `<p>${project.description}</p>`
+                                    }
+                                </div>
                             <div class="project-skills">
                                 ${project.skills.map(skill => 
                                     `<span class="project-skill-tag">${skill}</span>`
