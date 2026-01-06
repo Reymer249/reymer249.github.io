@@ -1202,9 +1202,13 @@
             },
             {
                 id: 2,
-                title: "Cryptocurrency Analytics Platform",
+                title: "Quantitative Portfolio Analytics Platform",
                 type: "Professional",
-                description: "Scalable analytical database processing 4.3M+ OHLCV data points with automated performance metrics calculation and interactive dashboards.",
+                description: [
+                    "At AlgoZeus, a digital-assets fund developing quantitative portfolio strategies, the primary challenge was evaluating large numbers of trading ideas in a consistent, data-driven way rather than executing trades in real time. The team needed a scalable analytics platform to measure performance, compare strategies, and understand risk across markets and timeframes.",
+                    "I worked as a backend data engineer responsible for designing and implementing the analytical data infrastructure supporting this research. Using Python, NumPy, Pandas, SciPy, and Postgres, I built data pipelines to process over 4.3 million OHLCV data points across more than 30 cryptocurrencies. I implemented standardized performance analytics — including Sharpe and Sortino ratios, CAGR, alpha, drawdowns, volatility, and win rates — across a hierarchy of approximately 150 signals, over 1,200 filtered strategies, and 100+ portfolios. I also contributed to portfolio-level backtesting, cross-market analysis, and expansion beyond Bitcoin into additional assets such as ETH and SOL.",
+                    "The resulting system enabled systematic comparison and monitoring of thousands of signal-strategy-portfolio combinations through interactive dashboards built with Flask and Plotly. These tools supported portfolio research and selection, helping identify strategies with sustained outperformance and improved risk-adjusted returns, and provided transparency into performance attribution, diversification effects, and downside risk. Through close collaboration with the lead trader and CTO, the platform became a core component of the firm’s quantitative research and portfolio construction workflow."
+                ],
                 skills: ["Python", "SQL", "Data Engineering", "Flask", "Plotly", "AWS/Google Cloud", "AWS Lambda/Cloud Functions", "Real-time Systems"],
                 linkedTo: ["exp-algozeus"],
                 image: "project2.jpg",
@@ -1236,6 +1240,18 @@
             },
             {
                 id: 5,
+                title: "Portfolio Tracking Telegram Bot",
+                type: "Professional",
+                description: [
+                    "At AlgoZeus, tracking real-time portfolio updates and trade signals was a challenge, causing delays in decision-making. I was responsible for creating a system that delivered timely notifications to the team, improving communication and responsiveness.", 
+                    "I developed a Telegram bot in Python using asynchronous programming and webhooks, integrated with the existing analytics backend, and deployed it on AWS Lambda. The bot handled updates and alerts for approximately 100 portfolios, delivering buy/sell signals and performance summaries across daily, 4-hour, and 1-hour intervals. This solution significantly reduced monitoring latency, enabling faster and more informed trading decisions while maintaining high reliability with minimal operational overhead."
+                ],
+                skills: ["Python", "AWS/Google Cloud", "AWS Lambda/Cloud Functions", "Plotly", "python-telegram-bot", "Webhooks"],
+                image: "project1.jpg",
+                projectUrl: null
+            },
+            {
+                id: 6,
                 title: "AI Voice Analytics Startup (Venture Validation Project)",
                 type: "Academic",
                 description: [
@@ -1245,7 +1261,7 @@
                 skills: ["Entrepreneurship", "Market Research", "Natural Language Processing (NLP)"],
                 linkedTo: ["edu-uva"],
                 image: "images/insytz.png",
-                projectUrl: "#"
+                projectUrl: null
             }
         ];
 
