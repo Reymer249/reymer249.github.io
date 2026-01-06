@@ -1502,15 +1502,23 @@
             document.getElementById('skillSearch').addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 const skillTags = document.querySelectorAll('.skill-tag');
-
+                const container = document.getElementById('skillsContainer');
+                
+                let visibleCount = 0;
                 skillTags.forEach(tag => {
                     const skill = tag.dataset.skill.toLowerCase();
                     if (skill.includes(searchTerm)) {
                         tag.classList.remove('hidden');
+                        visibleCount++;
                     } else {
                         tag.classList.add('hidden');
                     }
                 });
+                
+                // Adjust container height based on visible items
+                if (searchTerm) {
+                    container.classList.remove('collapsed');
+                }
             });
 
             // Clear filters
@@ -1564,12 +1572,20 @@
                 const container = document.getElementById('skillsContainer');
                 const button = document.getElementById('toggleSkills');
                 const text = button.querySelector('.toggle-text');
+                const searchInput = document.getElementById('skillSearch');
                 
                 container.classList.toggle('collapsed');
                 button.classList.toggle('expanded');
                 
                 if (container.classList.contains('collapsed')) {
                     text.textContent = 'Show More Skills';
+                    searchInput.value = ''; // Clear search when collapsing
+                    // Reset hidden skills
+                    document.querySelectorAll('.skill-tag').forEach(tag => {
+                        if (!tag.classList.contains('selected')) {
+                            tag.classList.remove('hidden');
+                        }
+                    });
                 } else {
                     text.textContent = 'Show Less Skills';
                 }
