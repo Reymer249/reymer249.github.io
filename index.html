@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Max Lytovka - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -39,7 +40,7 @@
         }
 
         nav .container {
-            max-width: 1200px;
+            max-width: min(82%, 1600px);
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -215,7 +216,7 @@
         /* Section Styles */
         section {
             padding: 6rem 2rem;
-            max-width: 1200px;
+            max-width: min(82%, 1600px);
             margin: 0 auto;
         }
 
@@ -937,6 +938,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            section {
+                padding: 4rem 1rem;
+                max-width: 100%;
+            }
+
+            nav .container {
+                max-width: 100%;
+                padding: 0.8rem 1rem;
+            }
+
             .hamburger {
                 display: flex;
             }
@@ -1326,7 +1337,7 @@
                     "Pressing the \"View Project\" button below will open the project website developed by our professors. The code for this project is available on my GitHub, but the repository is private and cannot be shared publicly."
                 ],
                 skills: ["Machine Learning Engineering", "Deep Learning / Neural Networks", "PyTorch", "CUDA", "Automatic Differentiation / Autograd", "Backpropagation", "Gradient Descent", "Convolutional Neural Networks", "GPU Programming", "Python", "NumPy", "Low-level Optimization"],
-                linkedTo: ["edu-leiden"],
+                linkedTo: ["edu-cornell"],
                 image: "images/minitorch.png",
                 projectUrl: "https://minitorch.github.io/"
             },
